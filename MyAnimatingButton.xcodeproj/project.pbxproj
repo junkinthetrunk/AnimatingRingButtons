@@ -13,9 +13,9 @@
 		80A1427B1BB9C0D200E893EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80A1427A1BB9C0D200E893EB /* Assets.xcassets */; };
 		80A1427E1BB9C0D200E893EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80A1427C1BB9C0D200E893EB /* LaunchScreen.storyboard */; };
 		80A142891BB9C0D200E893EB /* MyAnimatingButtonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A142881BB9C0D200E893EB /* MyAnimatingButtonUITests.swift */; };
-		80A142941BB9C14C00E893EB /* AnimatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A142931BB9C14C00E893EB /* AnimatingButton.swift */; settings = {ASSET_TAGS = (); }; };
-		80A142961BBAEF9B00E893EB /* MGGradientRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A142951BBAEF9B00E893EB /* MGGradientRing.swift */; settings = {ASSET_TAGS = (); }; };
-		80A142981BBB550800E893EB /* AnimatingButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A142971BBB550800E893EB /* AnimatingButton2.swift */; settings = {ASSET_TAGS = (); }; };
+		80A142941BB9C14C00E893EB /* AnimatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A142931BB9C14C00E893EB /* AnimatingButton.swift */; };
+		80A142961BBAEF9B00E893EB /* MGGradientRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A142951BBAEF9B00E893EB /* MGGradientRing.swift */; };
+		80A142981BBB550800E893EB /* AnimatingButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A142971BBB550800E893EB /* AnimatingButton2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,14 +149,16 @@
 		80A142681BB9C0D200E893EB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Maria Gomez";
 				TargetAttributes = {
 					80A1426F1BB9C0D200E893EB = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 					};
 					80A142831BB9C0D200E893EB = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 						TestTargetID = 80A1426F1BB9C0D200E893EB;
 					};
 				};
@@ -264,8 +266,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -309,8 +313,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -329,6 +335,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -343,6 +350,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MyAnimatingButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -355,6 +363,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MyAnimatingButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -365,6 +374,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MyAnimatingButtonUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = MyAnimatingButton;
 				USES_XCTRUNNER = YES;
 			};
@@ -377,6 +387,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MyAnimatingButtonUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = MyAnimatingButton;
 				USES_XCTRUNNER = YES;
 			};

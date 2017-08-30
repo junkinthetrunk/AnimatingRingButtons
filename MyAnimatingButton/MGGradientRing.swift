@@ -17,31 +17,31 @@ import UIKit
 class MGGradientRing: CALayer {
     
     //points for pointing the gradient towards
-    private let startPoints = [
-        CGPointMake(0,0),
-        CGPointMake(1,0),
-        CGPointMake(1,1),
-        CGPointMake(0,1),
+    fileprivate let startPoints = [
+        CGPoint(x: 0,y: 0),
+        CGPoint(x: 1,y: 0),
+        CGPoint(x: 1,y: 1),
+        CGPoint(x: 0,y: 1),
     ]
     
-    private let endPoints = [
-        CGPointMake(1,1),
-        CGPointMake(0,1),
-        CGPointMake(0,0),
-        CGPointMake(1,0),
+    fileprivate let endPoints = [
+        CGPoint(x: 1,y: 1),
+        CGPoint(x: 0,y: 1),
+        CGPoint(x: 0,y: 0),
+        CGPoint(x: 1,y: 0),
     ]
     
-    private var count = 4
+    fileprivate var count = 4
     
     
-    var fromColor = UIColor.clearColor()
-    var toColor = UIColor.clearColor()
+    var fromColor = UIColor.clear
+    var toColor = UIColor.clear
 
-    private var _gradientColors : [CGColor] = []
-    private var gradientColors : [CGColor] {
+    fileprivate var _gradientColors : [CGColor] = []
+    fileprivate var gradientColors : [CGColor] {
         get{
             if _gradientColors.count != 0 {return _gradientColors}
-            var fromRed : CGFloat = 0
+            var fromRed : CGFloat = 0.0
             var fromGreen : CGFloat = 0
             var fromBlue : CGFloat = 0
             var fromAlpha: CGFloat = 0
@@ -58,14 +58,14 @@ class MGGradientRing: CALayer {
             var gradient : [CGColor] = []
             
             //slice up the colors to make the gradient
-            for var i = 0; i <= count; i++ {
+            for i in (0...count) {
                 
                  gradient.append(UIColor(
                     red: fromRed + (toRed - fromRed)/CGFloat(count) * CGFloat(i),
                     green: fromGreen + (toGreen - fromGreen)/CGFloat(count) * CGFloat(i),
                     blue: fromBlue + (toBlue - fromBlue)/CGFloat(count) * CGFloat(i),
                     alpha: fromAlpha + (toAlpha - fromAlpha)/CGFloat(count) * CGFloat(i)
-                    ).CGColor
+                    ).cgColor
                 )
                 
             }
@@ -79,11 +79,13 @@ class MGGradientRing: CALayer {
         
         //this init will create four gradient boxes in four different position with their own distinct direction
         //all are added as a layer and then a circle is used for the mask
+        let width = bounds.width/CGFloat(count)
+        let height = bounds.height/CGFloat(count)
         var positionWithBounds :[CGPoint] = [
-            CGPointMake(CGRectGetWidth(bounds)/CGFloat(count) * CGFloat(3), CGRectGetHeight(bounds)/CGFloat(count) * CGFloat(1)),
-            CGPointMake(CGRectGetWidth(bounds)/CGFloat(count) * CGFloat(3), CGRectGetHeight(bounds)/CGFloat(count) * CGFloat(3)),
-            CGPointMake(CGRectGetWidth(bounds)/CGFloat(count) * CGFloat(1), CGRectGetHeight(bounds)/CGFloat(count) * CGFloat(3)),
-            CGPointMake(CGRectGetWidth(bounds)/CGFloat(count) * CGFloat(1), CGRectGetHeight(bounds)/CGFloat(count) * CGFloat(1)),
+            CGPoint(x: width * 3.0, y: height * 1.0),
+            CGPoint(x: width * 3.0, y: height * 3.0),
+            CGPoint(x: width * 1.0, y: height * 3.0),
+            CGPoint(x: width * 1.0, y: height * 3.0),
        ]
         
         //to create gradient get both colors and divide up into slices to get an array of colors for each slice
@@ -94,18 +96,18 @@ class MGGradientRing: CALayer {
         
         self.bounds = bounds
         self.borderWidth = lineWidth
-        self.borderColor = UIColor.clearColor().CGColor
+        self.borderColor = UIColor.clear.cgColor
         
         //create four gradient layers each facing to a different corner of the frame going clockwise
-        for var i = 0; i <= count - 1 ; i++ {
+        for i in (0...(count-1)) {
             
             let gradientLayer = CAGradientLayer()
-            gradientLayer.bounds = CGRectMake(0, 0, CGRectGetWidth(bounds)/2, CGRectGetWidth(bounds)/2)
+            gradientLayer.bounds = CGRect(x: 0, y: 0, width: bounds.width/2, height: bounds.width/2)
             gradientLayer.position = positionWithBounds[i]
 
             gradientLayer.colors = [gradientColors[i], gradientColors[i+1]]
             
-            gradientLayer.locations = [NSNumber(float: 0.0), NSNumber(float: 1.0)]
+            gradientLayer.locations = [NSNumber(value: 0.0 as Float), NSNumber(value: 1.0 as Float)]
             gradientLayer.startPoint = startPoints[i]
             gradientLayer.endPoint = endPoints[i]
             self.addSublayer(gradientLayer)
@@ -115,11 +117,11 @@ class MGGradientRing: CALayer {
     
         //add the mask for the circle
         let shapeLayer = CAShapeLayer()
-        shapeLayer.bounds = CGRectMake(0, 0,bounds.size.width - 2 * borderWidth, bounds.size.height - 2 * borderWidth)
-        shapeLayer.position = CGPointMake(CGRectGetWidth(bounds)/2, CGRectGetHeight(bounds)/2)
-        shapeLayer.strokeColor = UIColor.blackColor().CGColor
-        shapeLayer.fillColor = UIColor.clearColor().CGColor
-        shapeLayer.path = UIBezierPath(roundedRect: shapeLayer.bounds, cornerRadius: CGRectGetWidth(shapeLayer.bounds)).CGPath
+        shapeLayer.bounds = CGRect(x: 0, y: 0,width: bounds.size.width - 2 * borderWidth, height: bounds.size.height - 2 * borderWidth)
+        shapeLayer.position = CGPoint(x: bounds.width/2, y: bounds.height/2)
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.path = UIBezierPath(roundedRect: shapeLayer.bounds, cornerRadius: shapeLayer.bounds.width).cgPath
         shapeLayer.lineWidth = lineWidth
         shapeLayer.lineCap = kCALineCapRound
         shapeLayer.strokeStart = 0.05

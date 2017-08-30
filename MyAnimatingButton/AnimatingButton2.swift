@@ -14,25 +14,25 @@ import UIKit
     
     // MARK: Properties
     
-    @IBInspectable var fromColor: UIColor = UIColor.whiteColor()
-    @IBInspectable var toColor :UIColor = UIColor.purpleColor()
+    @IBInspectable var fromColor: UIColor = UIColor.white
+    @IBInspectable var toColor :UIColor = UIColor.purple
 
     @IBInspectable var borderWidth :CGFloat = 2.0
     
-    private var _animatingRing :CALayer?
-    private var animatingRing : CALayer? {
+    fileprivate var _animatingRing :CALayer?
+    fileprivate var animatingRing : CALayer? {
         get {
             
             if  _animatingRing != nil {return _animatingRing}
          
-            self.backgroundColor = UIColor.clearColor()
+            self.backgroundColor = UIColor.clear
             
             let animatingLayer = MGGradientRing(fromColor:self.fromColor, toColor: self.toColor, bounds: self.bounds, lineWidth:borderWidth)
             
             animatingLayer.frame = self.bounds
             
             _animatingRing = animatingLayer
-            animatingLayer.hidden = true
+            animatingLayer.isHidden = true
             return animatingLayer
         }
         
@@ -42,17 +42,17 @@ import UIKit
         didSet {
             if (animate) {
                 let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-                rotationAnimation.toValue = CGFloat (M_PI * 2.0)
+                rotationAnimation.toValue = CGFloat (Double.pi * 2.0)
                 rotationAnimation.duration = 0.75
-                rotationAnimation.cumulative = true
+                rotationAnimation.isCumulative = true
                 rotationAnimation.repeatCount = HUGE
                 
-                animatingRing!.addAnimation(rotationAnimation, forKey: "rotationAnimation")
-                animatingRing!.hidden = false
+                animatingRing!.add(rotationAnimation, forKey: "rotationAnimation")
+                animatingRing!.isHidden = false
             }
             else {
                 animatingRing!.removeAllAnimations()
-                animatingRing!.hidden = true
+                animatingRing!.isHidden = true
             }
             
         }
